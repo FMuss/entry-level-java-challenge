@@ -3,12 +3,12 @@ package com.challenge.api.controller;
 import com.challenge.api.dto.CreateEmployeeRequest;
 import com.challenge.api.model.Employee;
 import com.challenge.api.service.EmployeeService;
+import com.challenge.api.web.EmployeeNotFoundException;
 import jakarta.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/v1/employee")
@@ -28,8 +28,7 @@ public class EmployeeController {
     @GetMapping("/{uuid}")
     public Employee getEmployeeByUuid(@PathVariable UUID uuid) {
         // TODO: Replace with custom exception
-        return service.getEmployeeByUuid(uuid)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employee not found"));
+        return service.getEmployeeByUuid(uuid).orElseThrow(() -> new EmployeeNotFoundException(uuid));
     }
 
     @PostMapping
