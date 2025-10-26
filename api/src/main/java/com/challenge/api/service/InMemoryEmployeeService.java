@@ -63,7 +63,7 @@ public class InMemoryEmployeeService implements EmployeeService {
         sample.setJobTitle(title);
         sample.setEmail(email);
         sample.setContractHireDate(Instant.now());
-        sample.setContractTerminationDate(Instant.now().plus(1, ChronoUnit.YEARS));
+        sample.setContractTerminationDate(Instant.now().plus(365, ChronoUnit.DAYS));
         return sample;
     }
 }
