@@ -1,5 +1,6 @@
 package com.challenge.api.controller;
 
+import com.challenge.api.config.ApiKeyInterceptor;
 import com.challenge.api.dto.CreateEmployeeRequest;
 import com.challenge.api.model.Employee;
 import com.challenge.api.service.EmployeeService;
@@ -10,6 +11,15 @@ import java.util.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Exposes employee info for Employees-R-US webhooks.
+ * Security is enforced via an API key interceptor {@link ApiKeyInterceptor}
+ * To call any endpoint, include the following header:
+ * <p>
+ *     api-key: {key}
+ * </p>
+ * The default key is <code>key123</code> and can be configured in <code>application.yml</code>
+ */
 @RestController
 @RequestMapping("/api/v1/employee")
 public class EmployeeController {
@@ -27,7 +37,6 @@ public class EmployeeController {
 
     @GetMapping("/{uuid}")
     public Employee getEmployeeByUuid(@PathVariable UUID uuid) {
-        // TODO: Replace with custom exception
         return service.getEmployeeByUuid(uuid).orElseThrow(() -> new EmployeeNotFoundException(uuid));
     }
 

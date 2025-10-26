@@ -5,6 +5,10 @@ import java.time.Instant;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Implementation of the {@link Employee} interface.
+ * Provides a POJO that encapsulates Employee data.
+ */
 public class EmployeeImpl implements Employee {
 
     private UUID uuid;

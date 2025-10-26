@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * Service layer interface for managing {@link Employee} instances.
+ */
 public interface EmployeeService {
     List<Employee> getAllEmployees();
 

@@ -12,6 +12,12 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Service;
 
+/**
+ * In-memory implementation of {@link EmployeeService}.
+ * <p>
+ * Stores employee data in a concurrent map and contains a
+ * constructor to add sample employees for manual testing purposes.
+ */
 @Service
 public class InMemoryEmployeeService implements EmployeeService {
 

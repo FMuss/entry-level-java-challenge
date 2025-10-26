@@ -3,6 +3,10 @@ package com.challenge.api.dto;
 import jakarta.validation.constraints.*;
 import java.time.Instant;
 
+/**
+ * Data transfer object that represents the JSON body for creating a new Employee via the REST API.
+ * Provides input validation through annotations before data is passed to the service layer.
+ */
 public class CreateEmployeeRequest {
     @NotBlank
     private String firstName;
